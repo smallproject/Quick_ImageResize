@@ -9,14 +9,9 @@ namespace Quick_ImageResize
     class Logs_Class
     {
         StringBuilder logtext = new StringBuilder();
-        public void ManageLogs(string text)
+        string _logpath = Directory.GetCurrentDirectory() + @"\log.txt";
+        public Logs_Class() 
         {
-            CreateLog(text);
-        }
-
-        private void CreateLog(String Text)
-        {
-            string _logpath = Directory.GetCurrentDirectory() + @"\log.txt";
 
             if (!File.Exists(_logpath))
             {
@@ -25,21 +20,26 @@ namespace Quick_ImageResize
                 {
                     AddText(stream, logtext.ToString());
                 }
-                CreateLog(Text);
             }
-            else
+        }
+
+        public void ManageLogs(string text)
+        {
+            if (!File.Exists(_logpath))
             {
+                new Logs_Class();
+            }
+            CreateLog(text);
+        }
+
+        private void CreateLog(String Text)
+        {
+
                 logtext.Clear();
                 string text = AddString(Text);
                 logtext.AppendLine(text);
                 File.AppendAllText(_logpath, logtext.ToString());
 
-                //using (FileStream stream = File.OpenWrite(_logpath))
-                //{
-                //    string text = AddString(Text);
-                //    AddText(stream, text);
-                //}
-            }
         }
 
         private void Header()

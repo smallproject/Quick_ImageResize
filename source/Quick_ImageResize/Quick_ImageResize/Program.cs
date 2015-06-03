@@ -11,7 +11,9 @@ namespace Quick_ImageResize
 
         static void Main(string[] args)
         {
-            CDM.Manage();
+            
+            
+            ProcessFile(CDM.StoredImagePath());
         }
 
         private string Dimensions(string ImageUse)
@@ -19,9 +21,14 @@ namespace Quick_ImageResize
             string dimension = "";
             switch (ImageUse)
             {
-                case "facebook":
+                case "facebook-cover":
                     dimension = "851,315";
                     break;
+
+                case "facebook-profile":
+                    dimension = "180,180";
+                    break;
+                    
                 default:
                     break;
             }
@@ -31,8 +38,6 @@ namespace Quick_ImageResize
 
         private static string FolderPath()
         {
-            //return @"C:\git_root\Quick_ImageResize\source\Quick_ImageResize\Quick_ImageResize\Stored Image";
-            //return @"C:\git_root\Quick_ImageResize\source\Quick_ImageResize\Quick_ImageResize\Stored Image";
             return @"\Stored Image";
         }
 
@@ -42,6 +47,7 @@ namespace Quick_ImageResize
 
             foreach (var filename in fileEntries)
             {
+                CIM.ImageManage(filename);
                 Console.WriteLine(filename);
             }
         }

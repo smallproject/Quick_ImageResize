@@ -27,9 +27,8 @@ namespace Quick_ImageResize
             return TransformedImage;
         }
 
-        public void Manage()
+        public DirectoryManagement_Class()
         {
-            string path = "";
             if (!Directory.Exists(StoredImagePath()))
             {
                 Directory.CreateDirectory(StoredImagePath());
@@ -45,7 +44,7 @@ namespace Quick_ImageResize
 
         public DirectorySecurity DirectorySecurity(string path)
         {
-            DirectorySecurity().AddAccessRule(new);
+            return null;
         }
     }
 }
